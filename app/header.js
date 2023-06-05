@@ -2,12 +2,13 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const navigation = [
-  { name: "Inicio", href: "/", current: true },
-  { name: "Servicios", href: "/servicios", current: false },
-  { name: "Proyectos", href: "/proyectos", current: false },
-  { name: "Contacto", href: "/contacto", current: false },
+  { name: "Inicio", href: "/" },
+  { name: "Servicios", href: "/servicios"},
+  { name: "Proyectos", href: "/proyectos" },
+  { name: "Contacto", href: "/contacto" },
 ];
 
 function classNames(...classes) {
@@ -15,6 +16,7 @@ function classNames(...classes) {
 }
 
 export default function Header() {
+  const pathname = usePathname();
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -24,7 +26,7 @@ export default function Header() {
               <div className="flex items-center">
                 <div className="flex-shrink-0">
                   <Image
-                    className="h-8 w-8"
+                    className="h-8 w-8 animate-pulse"
                     src="/logo.svg"
                     alt="Roberto Martinez"
                     width={100}
@@ -39,12 +41,12 @@ export default function Header() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current
+                          item.href == pathname
                             ? "bg-gray-900 text-white"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                           "rounded-md px-3 py-2 text-sm font-medium"
                         )}
-                        aria-current={item.current ? "page" : undefined}
+                        aria-current={item.href == pathname ? "page" : undefined}
                       >
                         {item.name}
                       </a>
@@ -74,12 +76,12 @@ export default function Header() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current
+                    item.href == pathname
                       ? "bg-gray-900 text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? "page" : undefined}
+                  aria-current={item.href == pathname ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
