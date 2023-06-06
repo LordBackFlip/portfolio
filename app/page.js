@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function Home() {
   return (
-    <div className="flex items-center min-h-[89vh] justify-center placed-center">
+    <div className="flex items-center min-h-[89vh] justify-center placed-center px-2.5">
       <div className="max-w-lg bg-white bg-opacity-50 shadow-xl rounded-2xl shadow-md p-5">
         <Image
           className="w-32 h-32 rounded-full mx-auto"
