@@ -17,6 +17,7 @@ export default async function Contacto() {
                 className="w-200 h-200 mx-auto"
                 src={game.icon}
                 alt={game.game_name}
+                loading="lazy"
                 width={200}
                 height={200}
                 priority
