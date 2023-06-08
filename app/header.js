@@ -3,6 +3,7 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link'
 
 const navigation = [
   { name: "Inicio", href: "/" },
@@ -37,7 +38,7 @@ export default function Header() {
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -49,7 +50,7 @@ export default function Header() {
                         aria-current={item.href == pathname ? "page" : undefined}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
