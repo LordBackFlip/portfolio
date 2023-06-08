@@ -10,9 +10,8 @@ export default async function Contacto() {
     <div id="stats" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
       {gameList.map(game => (
         <div key={game.id} className="bg-black/60 to-white/5 rounded-lg shadow-md">
-          <div className="flex flex-row items-center">
+          <div className="flex flex-row items-center justify-center">
             <div className="p-2">
-              <p className="text-xl font-bold">{game.min_bet + game.currency}</p>
               <img
                 className="w-200 h-200 mx-auto"
                 src={game.icon}
@@ -22,8 +21,8 @@ export default async function Contacto() {
                 height={200}
                 priority
               />
-              <p className="text-gray-500 font-medium">{game.game_name}</p>
-              <p className="text-gray-500 text-sm">24 Nov 2022</p>
+              <h4 className="text-xl font-bold">{game.game_name}</h4>
+              <p className="text-gray-500 font-medium">Min. Bet {game.min_bet + game.currency}</p>
             </div>
           </div>
           <div className="border-t border-white/5 p-4">
