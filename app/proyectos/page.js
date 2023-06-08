@@ -1,5 +1,5 @@
 const fetchGames = () => {
-  return fetch('https://casino.starsolpty.com:8080/star-game-orchestrator/site/games?user_id=992722335__DivisionMalawi__MWK&page=1&size=20')
+  return fetch('https://casino-api.starsolpty.com:8443/star-game-orchestrator/site/games?user_id=992722337__DivisionMalawi__MWK&page=1&size=1500&name=')
     .then(res => res.json())
 }
 
@@ -11,9 +11,8 @@ export default async function Contacto() {
       {gameList.map(game => (
         <div key={game.id} className="bg-black/60 to-white/5 rounded-lg shadow-md">
           <div className="flex flex-row items-center">
-            <div className="text-3xl p-4">💰</div>
             <div className="p-2">
-              <p className="text-xl font-bold">{game.min_bet}</p>
+              <p className="text-xl font-bold">{game.min_bet + game.currency}</p>
               <img
                 className="w-200 h-200 mx-auto"
                 src={game.icon}
