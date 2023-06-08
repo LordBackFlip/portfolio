@@ -7,7 +7,7 @@ export default async function Contacto() {
   const games = await fetchGames()
   const gameList = games.data.list;
   return (
-    <div id="stats" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
+    <div id="stats" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
       {gameList.map(game => (
         <div key={game.id} className="bg-black/60 to-white/5 rounded-lg shadow-md">
           <div className="flex flex-row items-center">
