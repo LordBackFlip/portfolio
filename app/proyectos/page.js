@@ -1,4 +1,3 @@
-import Image from 'next/image';
 const fetchGames = () => {
   return fetch('https://casino.starsolpty.com:8080/star-game-orchestrator/site/games?user_id=992722335__DivisionMalawi__MWK&page=1&size=20')
     .then(res => res.json())
