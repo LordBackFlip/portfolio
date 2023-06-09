@@ -9,7 +9,6 @@ export default function Home() {
           alt="Roberto Profile"
           width={100}
           height={24}
-          priority
         />
         <h2 className="text-center text-2xl font-semibold mt-3">
           Roberto Martínez
