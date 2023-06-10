@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function Contacto() {
@@ -11,6 +11,19 @@ export default function Contacto() {
     const data = await res.json();
     return data.data.list;
   };
+
+  useEffect(() => {
+    const loadInitialGames = async () => {
+      const initialGames = await fetchGames();
+      if (initialGames.length === 0) {
+        setHasMore(false);
+      }
+      const firstTenGames = initialGames.slice(0, 10);
+      setGameList(firstTenGames);
+    };
+
+    loadInitialGames();
+  }, []);
 
   const loadMore = async () => {
     const newGames = await fetchGames();
