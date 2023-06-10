@@ -1,5 +1,5 @@
 const fetchGames = () => {
-  return fetch('https://casino-api.starsolpty.com:8443/star-game-orchestrator/site/games?user_id=992722337__DivisionMalawi__MWK&page=1&size=1500&name=')
+  return fetch('https://casino-api.starsolpty.com:8443/star-game-orchestrator/site/games?user_id=992722337__DivisionMalawi__MWK&page=1&size=15&name=')
     .then(res => res.json())
 }
 
