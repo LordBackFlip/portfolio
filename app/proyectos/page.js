@@ -3,7 +3,7 @@ import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function Contacto() {
-  const [gameList, setGameList] = useState([10]);
+  const [gameList, setGameList] = useState([]);
   const [hasMore, setHasMore] = useState(true);
 
   const fetchGames = async () => {
@@ -18,7 +18,9 @@ export default function Contacto() {
       setHasMore(false);
       return;
     }
-    setGameList([...gameList, ...newGames]);
+    const startIndex = gameList.length;
+    const endIndex = startIndex + 10;
+    setGameList([...gameList, ...newGames.slice(startIndex, endIndex)]);
   };
 
   return (
@@ -28,8 +30,9 @@ export default function Contacto() {
         next={loadMore}
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}
+        initialScrollY={false}
       >
-        {gameList.slice(0, 10).map(game => (
+        {gameList.map(game => (
           <div key={game.id} className="flex flex-row items-center justify-center">
             <div className="p-2">
               <div className="relative">
