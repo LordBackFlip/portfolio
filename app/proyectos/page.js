@@ -3,7 +3,7 @@ import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function Contacto() {
-  const [gameList, setGameList] = useState([]);
+  const [gameList, setGameList] = useState([10]);
   const [hasMore, setHasMore] = useState(true);
 
   const fetchGames = async () => {
