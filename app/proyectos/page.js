@@ -11,11 +11,13 @@ export default function Contacto() {
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [initialPageLoaded, setInitialPageLoaded] = useState(false); // Nuevo estado para controlar si se cargó la primera página
 
   useEffect(() => {
     fetchGames(1).then(data => {
       setGames(data.data.list);
       setPage(2);
+      setInitialPageLoaded(true); // Marcar la primera página como cargada
     });
   }, []);
 
@@ -33,7 +35,7 @@ export default function Contacto() {
 
   return (
     <div id="stats" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
-      {games.map(game => (
+      {initialPageLoaded && games.map(game => (
         <div key={game.id} className="flex flex-row items-center justify-center">
           <div className="p-2">
             <div className="relative">
@@ -54,18 +56,14 @@ export default function Contacto() {
           </div>
         </div>
       ))}
-      {hasMore && (
+      {hasMore && initialPageLoaded && (
         <InfiniteScroll
           dataLength={games.length}
           next={loadMore}
           hasMore={true}
-          loader={
-            <div className="flex justify-center my-4">
-              <div className="animate-spin w-6 h-6 border-3 border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
-                <span className="sr-only">Loading...</span>
-              </div>
-            </div>
-          }
+          loader={<div className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
+          <span className="sr-only">Loading...</span>
+        </div>}
         />
       )}
     </div>
