@@ -9,19 +9,22 @@ const fetchGames = (page) => {
 
 export default function Contacto() {
   const [games, setGames] = useState([]);
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
 
   useEffect(() => {
-    fetchGames(1).then(data => {
-      setGames(data.data.list);
+    const fetchInitialGames = async () => {
+      const initialGames = await fetchGames(page);
+      setGames(initialGames.data.list);
       setInitialLoadComplete(true);
-    });
+    };
+
+    fetchInitialGames();
   }, []);
 
   const loadMore = () => {
-    fetchGames(page).then(data => {
+    fetchGames(page + 1).then(data => {
       if (data.data.list.length === 0) {
         setHasMore(false);
         return;
