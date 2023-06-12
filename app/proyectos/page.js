@@ -1,9 +1,8 @@
-'use client'
 import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-const fetchGames = (page) => {
-  return fetch(`https://casino-api.starsolpty.com:8443/star-game-orchestrator/site/games?user_id=992722337__DivisionMalawi__MWK&page=${page}&size=10&name=`)
+const fetchGames = (page, size) => {
+  return fetch(`https://casino-api.starsolpty.com:8443/star-game-orchestrator/site/games?user_id=992722337__DivisionMalawi__MWK&page=${page}&size=${size}&name=`)
     .then(res => res.json())
 }
 
@@ -11,18 +10,29 @@ export default function Contacto() {
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const [initialPageLoaded, setInitialPageLoaded] = useState(false); // Nuevo estado para controlar si se cargó la primera página
+  const [initialPageLoaded, setInitialPageLoaded] = useState(false);
 
   useEffect(() => {
-    fetchGames(1).then(data => {
-      setGames(data.data.list);
+    const fetchInitialGames = async () => {
+      const pageSize = 10; // Cantidad de juegos a obtener en la primera carga
+      const initialData = await fetchGames(1, pageSize);
+      const initialGames = initialData.data.list;
+      const remainingGames = initialData.data.totalCount - pageSize;
+
+      setGames(initialGames);
       setPage(2);
-      setInitialPageLoaded(true); // Marcar la primera página como cargada
-    });
+      setInitialPageLoaded(true);
+
+      if (remainingGames === 0) {
+        setHasMore(false);
+      }
+    };
+
+    fetchInitialGames();
   }, []);
 
   const loadMore = () => {
-    fetchGames(page).then(data => {
+    fetchGames(page, 10).then(data => {
       if (data.data.list.length === 0) {
         setHasMore(false);
         return;
@@ -61,9 +71,13 @@ export default function Contacto() {
           dataLength={games.length}
           next={loadMore}
           hasMore={true}
-          loader={<div className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
-          <span className="sr-only">Loading...</span>
-        </div>}
+          loader={
+            <div className="flex justify-center my-4">
+              <div className="animate-spin w-6 h-6 border-3 border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
+                <span className="sr-only">Cargando...</span>
+              </div>
+            </div>
+          }
         />
       )}
     </div>
