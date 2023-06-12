@@ -7,7 +7,7 @@ const fetchGames = (page) => {
     .then(res => res.json())
 }
 
-export default async function Contacto() {
+export default function Contacto() {
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
