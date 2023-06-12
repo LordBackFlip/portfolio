@@ -9,8 +9,16 @@ const fetchGames = (page) => {
 
 export default function Contacto() {
   const [games, setGames] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
   const [hasMore, setHasMore] = useState(true);
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+
+  useEffect(() => {
+    fetchGames(1).then(data => {
+      setGames(data.data.list);
+      setInitialLoadComplete(true);
+    });
+  }, []);
 
   const loadMore = () => {
     fetchGames(page).then(data => {
@@ -24,13 +32,9 @@ export default function Contacto() {
     });
   }
 
-  useEffect(() => {
-    loadMore();
-  }, []);
-
   return (
     <div id="stats" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
-      {games.map(game => (
+      {initialLoadComplete && games.map(game => (
         <div key={game.id} className="flex flex-row items-center justify-center">
           <div className="p-2">
               <div className="relative">
@@ -46,21 +50,26 @@ export default function Contacto() {
                   </svg>
                 </a>
                 </div>
-                <h4 className="text-base font-bold" style={{ maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{game.game_name}</h4>
+                <h4 className="text-base font-bold" style={{ maxWidth: '208px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{game.game_name}</h4>
                 <p className="text-gray-500 text-xs">Min. Bet {game.min_bet + game.currency}</p>
               </div>
         </div>
       ))}
-      {hasMore && (
+      {!initialLoadComplete && (
+        <div className="flex justify-center my-4">
+          <div className="loader-container">
+            <div className="animate-spin w-6 h-6 border-3 border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
+              <span className="sr-only">Cargando...</span>
+            </div>
+          </div>
+        </div>
+      )}
+      {initialLoadComplete && hasMore && (
         <InfiniteScroll
           dataLength={games.length}
           next={loadMore}
           hasMore={true}
-          loader={ 
-                  <div className="animate-spin w-6 h-6 border-3 border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
-                    <span className="sr-only">Cargando...</span>
-                  </div>
-          }
+          loader={<></>}
         />
       )}
     </div>
