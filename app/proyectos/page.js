@@ -15,7 +15,7 @@ export default function Contacto() {
 
   useEffect(() => {
     const fetchInitialGames = async () => {
-      const pageSize = 10; // Cantidad de juegos a obtener en la primera carga
+      const pageSize = 20; // Cantidad de juegos a obtener en la primera carga
       const initialData = await fetchGames(1, pageSize);
       const initialGames = initialData.data.list;
       const remainingGames = initialData.data.totalCount - pageSize;
