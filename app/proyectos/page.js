@@ -13,7 +13,7 @@ export default function Contacto() {
   const [hasMore, setHasMore] = useState(true);
   const [initialPageLoaded, setInitialPageLoaded] = useState(false); // Nuevo estado para controlar si se cargó la primera página
 
-  useEffect(() => {
+  useState(() => {
     fetchGames(1).then(data => {
       setGames(data.data.list);
       setPage(2);
