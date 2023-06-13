@@ -42,7 +42,7 @@ export default function Contacto() {
           <div className="p-2">
               <div className="relative">
                 <img
-                  className="rounded-lg shadow-md bg-black/20 to-white/10 aspect-square w-full"
+                  className="rounded-lg shadow-3xl bg-black/30 to-white/10 aspect-square w-full"
                   src={game.icon}
                   alt={game.game_name}
                   loading="lazy"
