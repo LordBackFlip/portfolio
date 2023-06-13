@@ -53,7 +53,7 @@ export default function Contacto() {
                   </svg>
                 </a>
                 </div>
-                <h4 className="text-base font-bold" style={{ maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{game.game_name}</h4>
+                <h4 className="text-gray-100 font-bold" style={{ Width: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{game.game_name}</h4>
                 <p className="text-gray-500 text-xs">Min. Bet {game.min_bet + game.currency}</p>
               </div>
         </div>
