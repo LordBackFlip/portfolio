@@ -67,7 +67,7 @@ export default function Contacto() {
           next={loadMore}
           hasMore={true}
           loader={
-            <div className="animate-spin w-6 h-6 border-3 border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
+            <div className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
               <span className="sr-only">Loading...</span>
             </div>
           }
