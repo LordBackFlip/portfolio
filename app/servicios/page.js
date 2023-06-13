@@ -61,7 +61,7 @@ export default function Contacto() {
           </div>
         </div>
       ))}
-      {hasMore && initialPageLoaded && (
+      {hasMore && (
         <InfiniteScroll
           dataLength={games.length}
           next={loadMore}
