@@ -35,7 +35,7 @@ export default function Contacto() {
   }
 
   return (
-    <div id="stats" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5">
+    <div id="stats" className="relative grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-5">
       {initialPageLoaded && games.map(game => (
         <div key={game.id} className="flex-row items-center justify-center">
           <div className="p-2">
@@ -61,13 +61,30 @@ export default function Contacto() {
           </div>
         </div>
       ))}
-      {hasMore && (
+      {!initialPageLoaded && (
+        [...Array(10)].map((_, index) => (
+          <div key={index} className="animate-pulse flex-row items-center justify-center">
+            <div className="p-2">
+              <div className="flex items-center justify-center placed-center relative rounded-lg shadow-3xl bg-black/25 to-white/10 aspect-square w-full">
+                <div className="animate-spin w-6 h-6 border-[3px] border-current border-t-transparent text-slate-400 rounded-full" role="status" aria-label="loading">
+                  <span className="sr-only">Cargando...</span>
+                </div>
+              </div>
+              <div className='flex flex-col items-center justify-center'>
+                <div className="h-2 mt-2 rounded-full bg-slate-400 w-32"></div>
+                <div className="h-1.5 mt-1.5 mb-2 rounded-full bg-slate-400 w-12"></div>
+              </div>
+            </div>
+          </div>
+        ))
+      )}
+      {initialPageLoaded && hasMore && (
         <InfiniteScroll
           dataLength={games.length}
           next={loadMore}
           hasMore={true}
           loader={
-            <div className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
+            <div className="animate-spin w-6 h-6 border-[3px] border-current border-t-transparent text-slate-400 rounded-full" role="status" aria-label="loading">
               <span className="sr-only">Loading...</span>
             </div>
           }
