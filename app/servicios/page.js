@@ -76,7 +76,7 @@ export default function Contacto() {
               aria-modal="true"
               role="dialog"
             >
-              <div className="bg-white rounded-md shadow-lg w-auto mx-auto max-w-[500px] p-4">
+              <div className="bg-white rounded-md shadow-lg w-auto mx-auto max-w-[500px] px-4">
                 <div className="flex justify-between items-center p-4 border-b-2 border-neutral-100">
                   <h5 className="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200">
                     {game.game_name}
