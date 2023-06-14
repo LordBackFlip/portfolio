@@ -71,7 +71,7 @@ export default function Contacto() {
                 </div>
               </div>
               <div className='flex flex-col items-center justify-center'>
-                <div className="h-2 mt-2 rounded-full bg-slate-400 w-32"></div>
+                <div className="h-2 mt-2 rounded-full bg-slate-400 w-28"></div>
                 <div className="h-1.5 mt-1.5 mb-3 rounded-full bg-slate-400 w-12"></div>
               </div>
             </div>
