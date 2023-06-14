@@ -68,7 +68,7 @@ export default function Contacto() {
           </div>
           {modalState[game.id] && (
             <div
-              className="fixed left-0 top-0 z-[1055] h-full w-full flex items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm"
+              className="fixed left-0 top-0 z-[1055] h-full w-full flex items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm px-4"
               data-te-modal-init
               id="exampleModalCenteredScrollable"
               tabIndex="-1"
@@ -76,7 +76,7 @@ export default function Contacto() {
               aria-modal="true"
               role="dialog"
             >
-              <div className="bg-white rounded-md shadow-lg w-auto mx-auto max-w-[500px] px-4">
+              <div className="bg-white rounded-md shadow-lg w-auto mx-auto max-w-[500px]">
                 <div className="flex justify-between items-center p-4 border-b-2 border-neutral-100">
                   <h5 className="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200">
                     {game.game_name}
