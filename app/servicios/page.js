@@ -55,7 +55,7 @@ export default function Contacto() {
               </a>
             </div>
             <div className='text-center'>
-              <h4 className="text-gray-200 font-bold" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{game.game_name}</h4>
+              <h4 className="text-gray-200 font-bold w-full overflow-hidden text-ellipsis whitespace-nowrap">{game.game_name}</h4>
               <p className="text-green-500 text-xs">{game.min_bet + game.currency}</p>
             </div>
           </div>
