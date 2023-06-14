@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 const fetchGames = (page) => {
-  return fetch(`https://casino-api.starsolpty.com:8443/star-game-orchestrator/site/games?user_id=992722337__DivisionMalawi__MWK&page=${page}&size=10&name=`)
+  return fetch(`https://casino-api.starsolpty.com:8443/star-game-orchestrator/site/games?user_id=992722337__DivisionMalawi__MWK&page=${page}&size=6&name=`)
     .then(res => res.json())
 }
 
@@ -62,7 +62,7 @@ export default function Contacto() {
         </div>
       ))}
       {!initialPageLoaded && (
-        [...Array(10)].map((_, index) => (
+        [...Array(6)].map((_, index) => (
           <div key={index} className="animate-pulse flex-row items-center justify-center">
             <div className="p-2">
               <div className="flex items-center justify-center placed-center relative rounded-lg shadow-3xl bg-black/25 to-white/10 aspect-square w-full">
