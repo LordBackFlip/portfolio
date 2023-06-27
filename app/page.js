@@ -1,17 +1,21 @@
 'use client'
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
-function Movies({ title, movies }) {
+function Games({ title, games }) {
   return (
     <div className="my-8">
       <h2 className="text-2xl font-bold uppercase mx-8">{title}</h2>
       <div className="flex overflow-x-auto mt-4 p-4">
-        {movies.map((movie) => (
-          <img
-            key={movie.id}
-            src={movie.icon}
-            alt={movie.game_name}
-            className="m-2 w-40 transition-all duration-200 hover:scale-110"
+        {games.map((game) => (
+          <Image
+          className="m-2 w-40 h-40 transition-all duration-200 hover:scale-110 rounded-lg shadow-3xl bg-black/30 to-white/10 aspect-square"
+            key={game.id}
+            src={game.icon}
+            alt={game.game_name}
+            loading="lazy"
+            width={200}
+            height={200}
           />
         ))}
       </div>
@@ -56,7 +60,7 @@ export default function Home() {
   return (
     <>
       {categories.map((category) => (
-        <Movies key={category.code} title={category.name} movies={gamesByCategory[category.name] || []} />
+        <Games key={category.code} title={category.name} games={gamesByCategory[category.name] || []} />
       ))}
     </>
   );
