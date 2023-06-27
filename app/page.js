@@ -16,10 +16,10 @@ function Games({ title, games }) {
       <h2 className="text-2xl font-bold uppercase mx-8">{title}</h2>
       <div className="flex overflow-x-auto mt-4 p-4">
         {games.map((game) => (
-          <div key={game.id} className="m-2 w-36 sm:m-4 sm:w-56">
+          <div key={game.id} className="m-2 w-36 sm:m-4 sm:w-52 lg:w-56">
             <div className="relative">
               <Image
-                className="h-36 w-36 sm:w-52 sm:h-52 transition-all duration-200 rounded-lg shadow-3xl bg-black/30 to-white/10 aspect-square"
+                className="h-36 w-36 sm:h-48 sm:w-48 lg:w-52 lg:h-52 transition-all duration-200 rounded-lg shadow-3xl bg-black/30 to-white/10 aspect-square"
                 src={game.icon}
                 alt={game.game_name}
                 loading="lazy"
@@ -32,7 +32,7 @@ function Games({ title, games }) {
                 </svg>
               </a>
             </div>
-            <div className='text-center w-36 sm:w-52'>
+            <div className='text-center w-36 sm:w-48 lg:w-52'>
               <h4 className="text-gray-200 font-bold w-full overflow-hidden text-ellipsis whitespace-nowrap">{game.game_name}</h4>
               <p className="text-green-500 text-xs">{game.min_bet + game.currency}</p>
             </div>
