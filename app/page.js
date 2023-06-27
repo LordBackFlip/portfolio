@@ -13,7 +13,7 @@ function Games({ title, games }) {
   };
 
   return (
-    <div className="my-8 shadow-body">
+    <div className="my-8">
       <h2 className="text-2xl font-bold uppercase mx-8">{title}</h2>
       <div className="flex overflow-x-auto mt-4 p-4">
         {games.map((game) => (
