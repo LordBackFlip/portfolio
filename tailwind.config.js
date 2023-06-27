@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       boxShadow: {
         '3xl': '0 0.0625rem 0.5rem 0 rgba(0,0,0,.4)',
-        'body': 'rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px'
+        'body': 'rgb(0 0 0 / 30%) 0px -23px 25px 0px inset, rgb(0 0 0 / 32%) 0px -36px 30px 0px inset, rgb(0 0 0 / 22%) 0px -79px 40px 0px inset, rgb(0 0 0 / 13%) 0px 2px 1px, rgb(0 0 0 / 15%) 0px 4px 2px, rgb(0 0 0 / 17%) 0px 8px 4px, rgb(0 0 0 / 16%) 0px 16px 8px, rgb(0 0 0 / 23%) 0px -32px 16px'
       }
     },
   },
