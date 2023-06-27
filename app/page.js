@@ -14,7 +14,7 @@ function Games({ title, games }) {
 
   return (
     <div className="my-8">
-      <h2 className="text-2xl font-bold uppercase mx-8 text-gray-200">{title}</h2>
+      <h2 className="text-2xl font-bold uppercase mx-8 text-gray-200 bg-gradient-to-r from-black via-black to-transparent pl-2 pb-1">{title}</h2>
       <div className="flex overflow-x-auto mt-4 p-4">
         {games.map((game) => (
           <div key={game.id} className="m-2 w-36 sm:m-4 sm:w-52 lg:w-56">
