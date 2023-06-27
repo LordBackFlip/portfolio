@@ -14,7 +14,7 @@ function Games({ title, games }) {
                 className="h-36 w-36 sm:h-48 sm:w-48 lg:w-52 lg:h-52 transition-all duration-200 rounded-lg shadow-3xl bg-black/30 to-white/10 aspect-square"
                 src={game.icon}
                 alt={game.game_name}
-                loading="eager"
+                loading="lazy"
                 width={200}
                 height={200}
               />
