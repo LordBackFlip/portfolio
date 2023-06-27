@@ -9,7 +9,7 @@ function Games({ title, games }) {
       <div className="flex overflow-x-auto mt-4 p-4">
         {games.map((game) => (
           <Image
-          className="m-2 w-40 h-40 transition-all duration-200 hover:scale-110 rounded-lg shadow-3xl bg-black/30 to-white/10 aspect-square"
+          className="m-2 w-32 h-32 transition-all duration-200 hover:scale-110 rounded-lg shadow-3xl bg-black/30 to-white/10 aspect-square"
             key={game.id}
             src={game.icon}
             alt={game.game_name}
