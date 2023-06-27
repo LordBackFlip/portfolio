@@ -1,19 +1,20 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
 import Header from './header';
-import Image from "next/image";
 export const metadata = {
-  title: 'Roberto Martínez',
-  description: 'Test',
+  title: 'Lobby Test'
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className="h-full shadow-body">
-        <Header />
-        {children}
-        </body>
+      <body className="h-screen overflow-y-scroll">
+        <div className="fixed inset-0 shadow-body">
+        </div>
+        <div className="relative">
+          <Header />
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
