@@ -19,3 +19,7 @@ body{
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+  .efecto-title-games::after{
+    content: ""; position: absolute; background-image: url(https://cgp-cdn.safe-iplay.com/assets/images/horizontal-line-glow.png); background-repeat: no-repeat; background-position: bottom center; background-size: contain; left: 0; right: 0; bottom: -1px; width: 80%; height: 40px; margin: 0 auto;
+  }

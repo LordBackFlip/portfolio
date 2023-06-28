@@ -50,7 +50,7 @@ function Games({ title, games }) {
                 </svg>
               </a>
             </div>
-            <div className='text-center w-36 sm:w-48 lg:w-52'>
+            <div className='text-center w-36 sm:w-48 lg:w-52 relative efecto-title-games'>
               <h4 className="text-gray-200 font-bold w-full overflow-hidden text-ellipsis whitespace-nowrap">{game.game_name}</h4>
               <p className="text-green-500 text-xs">{game.min_bet + game.currency}</p>
             </div>

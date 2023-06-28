@@ -61,7 +61,7 @@ export default function Contacto() {
                 </svg>
               </a>
             </div>
-            <div className='text-center'>
+            <div className='text-center relative efecto-title-games'>
               <h4 className="text-gray-200 font-bold w-full overflow-hidden text-ellipsis whitespace-nowrap">{game.game_name}</h4>
               <p className="text-green-500 text-xs">{game.min_bet + game.currency}</p>
             </div>
