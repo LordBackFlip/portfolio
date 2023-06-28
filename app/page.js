@@ -32,7 +32,7 @@ function Games({ title, games }) {
           <button onClick={scrollRight}>Right</button>
         </div>
       </div>
-      <div ref={scrollRef} className="flex overflow-auto mt-4 p-4">
+      <div ref={scrollRef} className="flex mt-4 p-4">
         {games.map((game) => (
           <div key={game.id} className="m-2 w-36 sm:m-4 sm:w-52 lg:w-56">
             <div className="relative">
