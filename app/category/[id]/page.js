@@ -9,7 +9,7 @@ const fetchGames = (page, id) => {
     .then(res => res.json())
 }
 
-export default function Contacto({params}) {
+export default function Contacto({ params }) {
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -32,7 +32,7 @@ export default function Contacto({params}) {
 
   const loadMore = () => {
     fetchGames(page, params.id).then(data => {
-      if (data.data.list.length === 0) {
+      if (data.data.list.length === 0 && data.data.nextPage === false) {
         setHasMore(false);
         return;
       }
@@ -161,9 +161,11 @@ export default function Contacto({params}) {
           next={loadMore}
           hasMore={true}
           loader={
-            <div className="animate-spin w-6 h-6 border-[3px] border-current border-t-transparent text-slate-400 rounded-full" role="status" aria-label="loading">
-              <span className="sr-only">Loading...</span>
-            </div>
+                  <div className="flex items-center justify-center placed-center relative aspect-square w-full">
+                    <div className="animate-spin w-6 h-6 border-[3px] border-current border-t-transparent text-slate-400 rounded-full" role="status" aria-label="loading">
+                      <span className="sr-only">Cargando...</span>
+                    </div>
+                  </div>
           }
         />
       )}
