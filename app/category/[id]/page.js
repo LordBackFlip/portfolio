@@ -3,12 +3,13 @@ import Image from "next/image";
 import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-const fetchGames = (page) => {
-  return fetch(`https://casino-api.starsolpty.com:8443/star-game-orchestrator/site/games?user_id=992722337__DivisionMalawi__MWK&page=${page}&size=10&name=`)
+const fetchGames = (page, id) => {
+  const categoryParam = id === "ALL" ? "&name=" : `&category=${id}`;
+  return fetch(`https://casino-api.starsolpty.com:8443/star-game-orchestrator/site/games?user_id=992722337__DivisionMalawi__MWK&page=${page}&size=10${categoryParam}`)
     .then(res => res.json())
 }
 
-export default function Contacto() {
+export default function Contacto({params}) {
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -22,7 +23,7 @@ export default function Contacto() {
     }));
   };
   useEffect(() => {
-    fetchGames(1).then(data => {
+    fetchGames(1, params.id).then(data => {
       setGames(data.data.list);
       setPage(2);
       setInitialPageLoaded(true); // Marcar la primera página como cargada
@@ -30,7 +31,7 @@ export default function Contacto() {
   }, []);
 
   const loadMore = () => {
-    fetchGames(page).then(data => {
+    fetchGames(page, params.id).then(data => {
       if (data.data.list.length === 0) {
         setHasMore(false);
         return;

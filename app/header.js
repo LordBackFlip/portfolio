@@ -1,23 +1,44 @@
-"use client";
+'use client'
+import { useState, useEffect } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link'
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-const navigation = [
-  { name: "Inicio", href: "/" },
-  { name: "Servicios", href: "/servicios"},
-  { name: "Proyectos", href: "/proyectos" },
-  { name: "Contacto", href: "/contacto" },
-];
+const fetchCategories = () => {
+  return fetch(
+    `https://casino-api.starsolpty.com:8443/star-game-orchestrator/site/categories?user_id=992722337__DivisionMalawi__MWK`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then((res) => res.json());
+};
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Header() {
+  const [categories, setCategories] = useState([]);
   const pathname = usePathname();
+
+  useEffect(() => {
+    fetchCategories().then((data) => {
+      const newNavigation = data.data.map((category) => ({
+        name: category.name,
+        href: `/category/${category.name}`,
+      }));
+      setCategories([
+        { name: "HOME", href: "/" },
+        ...newNavigation,
+        { name: "ALL", href: "/category/ALL" },
+      ]);
+    });
+  }, []);
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -37,7 +58,7 @@ export default function Header() {
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
-                    {navigation.map((item) => (
+                    {categories.map((item) => (
                       <Link
                         key={item.name}
                         href={item.href}
@@ -47,7 +68,9 @@ export default function Header() {
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                           "rounded-md px-3 py-2 text-sm font-medium"
                         )}
-                        aria-current={item.href == pathname ? "page" : undefined}
+                        aria-current={
+                          item.href == pathname ? "page" : undefined
+                        }
                       >
                         {item.name}
                       </Link>
@@ -60,9 +83,15 @@ export default function Header() {
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                    <XMarkIcon
+                      className="block h-6 w-6"
+                      aria-hidden="true"
+                    />
                   ) : (
-                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                    <Bars3Icon
+                      className="block h-6 w-6"
+                      aria-hidden="true"
+                    />
                   )}
                 </Disclosure.Button>
               </div>
@@ -71,7 +100,7 @@ export default function Header() {
 
           <Disclosure.Panel className="md:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-              {navigation.map((item) => (
+              {categories.map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"
@@ -82,7 +111,9 @@ export default function Header() {
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.href == pathname ? "page" : undefined}
+                  aria-current={
+                    item.href == pathname ? "page" : undefined
+                  }
                 >
                   {item.name}
                 </Disclosure.Button>
